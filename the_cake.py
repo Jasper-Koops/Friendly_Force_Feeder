@@ -10,19 +10,19 @@ from recepten import food_opties
 - Stuur op de dag zelf nog een dag specifieke reminder, + recept
 :::TOEKOMST:::
 - Rekening houden met gebruikte ingredienten (zodat er niks overblijft)
-- Kennis geven van hoe duur iets is (hoe specifiek dit wordt meot ik nog beslissen)
+- Kennis geven van hoe duur iets is (hoe specifiek dit wordt moet ik nog beslissen)
 :::ALTIJD:::
 - Meer recepten toevoegen
 """
 
 def double_checker(keuze, week):
-    #Checkt dat er geen dubbele recepten in de week komen.
+    """Checkt dat er geen dubbele recepten in de week komen."""
     while keuze in week:
         keuze = random.choice(food_opties.items())
     return keuze
 
 def dag_printer(day):
-    #Fixed even dat de juiste dag weergeven wordt
+    """Fixed even dat de juiste dag weergeven wordt"""
     if day == 0:
         return "Maandag"
     elif day == 1:
@@ -33,7 +33,7 @@ def dag_printer(day):
         return "Donderdag"
 
 def sent_mail(bericht):
-    #Verstuurd de mail naar alle in de commandline opgegeven targets.
+    """Verstuurd de mail naar alle in de commandline opgegeven targets."""
     user = sys.argv[1]
     password = sys.argv[2]
     targets = sys.argv[3:]
@@ -49,7 +49,7 @@ def sent_mail(bericht):
         print adress
 
 def week_recept(week, bericht):
-    #Maakt een leesbaar format van het week overzicht
+    """Maakt een leesbaar format van het week overzicht"""
     day = 0
     for dag in week:
         bericht += "\n"
@@ -65,19 +65,20 @@ def week_recept(week, bericht):
     return bericht
 
 def dag_recept(week, day, message):
-    #Maak een leesbaar format van de dag herinnering
+    """Maak een leesbaar format van de dag herinnering"""
     message += dag_printer(day)
     message += "\n"
     vandaag = week[day]
     message += str(week[day])
     return message
 
+
 #Kies de recepten voor de dagen
 
 while True:
 
-    #time.sleep(604800)  //Omdat ik geen week wil wachten als ik dit test.
-    time.sleep(2)
+    time.sleep(604800)
+    #time.sleep(2) LET EROP DAT DE TIJDEN KLOPPEN
 
     week = []
     day = 0
@@ -99,8 +100,8 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-    #time.sleep(86400) //Omdat het sneller moet gaan bij het testen
-    time.sleep(2)
+    time.sleep(86400)
+    #time.sleep(2)  LET EROP DAT DE TIJDEN KLOPPEN
     for x in range(0,4): #Want voor 4 dagen
         message = ""
         header = "Subject: %s\n\n" % "Dagmail" #Onderwerp verschilt per bericht, dus moet buiten de functie.
