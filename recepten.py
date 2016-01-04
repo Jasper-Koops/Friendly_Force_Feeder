@@ -1,3 +1,5 @@
+import random
+
 food_opties = {
         "ultra bonen rijst": ["rijst", "tomaat", "ui", "capucijners", "spekreepjes"],
         "vega couscous": ["couscous", "wortel", "geroosterde paprika", "cashewnoten", "prei"],
@@ -32,21 +34,23 @@ ingredienten = {
 
     # ^ staat hij volgens mij
 
-    "capucijners": 0.00, #!!!!!!
-    "cashewnoten": 0.00, # !!!!!
-    "couscous": 0.00, #!!!!!
-    "geroosterde paprika": 0.00, #!!!!!
-    "kip": 0.00, # !!!!!!!
-    "limoensap": 0.00, # !!!!!!
-    "linzen": 0.00, # !!!!!!!
+    #MEESTE PRIJZEN ZIJN NEP
+
+    "capucijners": 1.00, #!!!!!!
+    "cashewnoten": 0.40, # !!!!!
+    "couscous": 0.20, #!!!!!
+    "geroosterde paprika": 0.80, #!!!!!
+    "kip": 4.00, # !!!!!!!
+    "limoensap": 0.20, # !!!!!!
+    "linzen": 0.30, # !!!!!!!
     "prei": 0.40,
-    "rijst":0.00, # !!!!!!
-    "rode ui": 0.00, #!!!!!!!
-    "spekreepjes": 0.00, # !!!!!
-    "tomaat": 0.00, # !!!!!
-    "ui": 0.00, #!!!!!!!!!!
+    "rijst":0.20, # !!!!!!
+    "rode ui": 0.24, #!!!!!!!
+    "spekreepjes": 1.10, # !!!!!
+    "tomaat": 0.19, # !!!!!
+    "ui": 0.11, #!!!!!!!!!!
     "wortel": 0.18,
-    "yoghurt": 0.00, # !!!!!
+    "yoghurt": 0.80, # !!!!!
 
 
 
@@ -70,7 +74,24 @@ def prijs(recept):
 # ^zoiets?
 
 
+def totale_prijs(week):
+    """Berekent de totale kosten van de week"""
+    totale_prijs = 0
+    for gerecht in week:
+        totale_prijs += prijs(gerecht[0])
+    return totale_prijs
 
-print prijs("couscous")
 
-print prijs("rijst met kip")
+"""
+week = []
+for x in range(1,3):
+    week.append(random.choice(food_opties.items()))
+
+"""
+
+
+#print prijs("ultra bonen rijst")
+#print totale_prijs(week)
+#print totale_prijs(week)
+
+#print prijs("rijst met kip")
