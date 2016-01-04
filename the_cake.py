@@ -36,9 +36,9 @@ def dag_printer(day):
 
 def sent_mail(bericht):
     """Verstuurd de mail naar alle adressen in de commandline opgegeven targets."""
-    user = sys.argv[1]
-    password = sys.argv[2]
-    targets = sys.argv[3:]
+    user = sys.argv[2]
+    password = sys.argv[3]
+    targets = sys.argv[4:]
     smtp = "smtp.gmail.com:587"
     print("sending email")
     for adress in targets:
@@ -51,10 +51,10 @@ def sent_mail(bericht):
         print adress
 
 def week_recept(week, bericht):
-    """Maakt een leesbaar format van het week overzicht"""
+    """DEZE VERSIE GEEFT OOK PRIJS, IS DAT NIET NICE?"""
     day = 0
     for dag in week:
-        bericht += "\n"
+        bericht += "\n\n"
         bericht += dag_printer(day)
         bericht += "\nGERECHT: "
         bericht += dag[0]
@@ -63,16 +63,30 @@ def week_recept(week, bericht):
             for y in x:
                 bericht += y
                 bericht += "\n"
+            bericht += "kosten: "
+            bericht += str(prijs(week[day][0]))
         day += 1
+    bericht += "\n\n"
+    bericht += "totale kosten: "
+    bericht += str(totale_prijs(week)) #Werkt dit?
     return bericht
 
+
 def dag_recept(week, day, message):
-    """Maak een leesbaar format van de dag herinnering"""
+    """ Maak een leesbaar format van de dag herinnering """
     message += dag_printer(day)
+    message += "\n\n"
+    message += str(week[day][0])
+    message += "\n\n"
+    for x in list(week[day][1:]):
+        for y in x:
+            message += y
+            message += "\n"
     message += "\n"
-    vandaag = week[day]
-    message += str(week[day])
+    message += "totale kosten: "
+    message += str(prijs(week[day][0]))
     return message
+
 
 def prijs(recept):
     """Rekent de prijs uit van een recept """
@@ -86,33 +100,39 @@ def prijs(recept):
 def totale_prijs(week):
     """Berekent de totale kosten van de week"""
     totale_prijs = 0
-    for x in week:
-        totale_prijs += prijs(x)
+    for gerecht in week:
+        totale_prijs += prijs(gerecht[0])
     return totale_prijs
-
-
-
 
 
 #Kies de recepten voor de dagen
 
 while True:
 
-    time.sleep(604800)
-    #time.sleep(2) LET EROP DAT DE TIJDEN KLOPPEN
+    #time.sleep(604800)
+    time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
 
-    week = []
+    max_budget = sys.argv[1]
+    week = [] # Is deze dubbelop?
     day = 0
+    doorgaan = "nee"
 
-    maandag = random.choice(food_opties.items())
-    week.append(maandag)
-    dinsdag = random.choice(food_opties.items())
-    week.append(double_checker(dinsdag, week))
-    woensdag = random.choice(food_opties.items())
-    week.append(double_checker(woensdag, week))
-    donderdag = random.choice(food_opties.items())
+    while doorgaan == "nee":
 
-    week.append(double_checker(donderdag, week))
+        week = []
+
+        maandag = random.choice(food_opties.items())
+        week.append(maandag)
+        dinsdag = random.choice(food_opties.items())
+        week.append(double_checker(dinsdag, week))
+        woensdag = random.choice(food_opties.items())
+        week.append(double_checker(woensdag, week))
+        donderdag = random.choice(food_opties.items())
+
+        week.append(double_checker(donderdag, week))
+
+        if totale_prijs(week) <= max_budget:
+            doorgaan = "ja"
 
     bericht = ""
     header = "Subject: %s\n\n" % "Weekoverzicht" #Onderwerp verschilt per bericht, dus moet buiten de functie.
@@ -121,8 +141,8 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-    time.sleep(86400)
-    #time.sleep(2)  LET EROP DAT DE TIJDEN KLOPPEN
+    #time.sleep(86400)
+    time.sleep(2)  #LET EROP DAT DE TIJDEN KLOPPEN
     for x in range(0,4): #Want voor 4 dagen
         message = ""
         header = "Subject: %s\n\n" % "Dagmail" #Onderwerp verschilt per bericht, dus moet buiten de functie.
