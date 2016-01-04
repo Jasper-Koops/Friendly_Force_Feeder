@@ -5,3 +5,17 @@ food_opties = {
         "Libanese Linzen": ["100 gram rijst", "Yoghurt", "100 gram linzen", "limoensap", "rode uien", "kruiden"],
         "Mocro couscous": ["100 gram couscous", "100 gram linzen", "Yoghurt", "limoensap", "ui"],
         }
+
+
+"""
+Rijst gerechten:
+Rijs: 0.28 (12.50 / 45)
+
+Vega Couscous:
+
+couscous: 0.23
+wortel: 0.18
+Prei: 0.40
+
+
+"""
