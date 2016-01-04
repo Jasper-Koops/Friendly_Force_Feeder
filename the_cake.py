@@ -21,6 +21,7 @@ def double_checker(keuze, week):
         keuze = random.choice(food_opties.items())
     return keuze
 
+
 def dag_printer(day):
     """Fixed even dat de juiste dag weergeven wordt"""
     if day == 0:
@@ -33,7 +34,7 @@ def dag_printer(day):
         return "Donderdag"
 
 def sent_mail(bericht):
-    """Verstuurd de mail naar alle in de commandline opgegeven targets."""
+    """Verstuurd de mail naar alle adressen in de commandline opgegeven targets."""
     user = sys.argv[1]
     password = sys.argv[2]
     targets = sys.argv[3:]
@@ -71,6 +72,15 @@ def dag_recept(week, day, message):
     vandaag = week[day]
     message += str(week[day])
     return message
+
+def prijs(recept):
+    """Rekent de prijs uit van een recept """
+    prijs = 0
+    for gerecht in food_opties[recept]:
+        for key, value in ingredienten.items():
+            if key == gerecht:
+                prijs += value
+    return prijs
 
 
 #Kies de recepten voor de dagen
