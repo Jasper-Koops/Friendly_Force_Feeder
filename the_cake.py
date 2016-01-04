@@ -77,13 +77,8 @@ def dag_recept(week, day, message):
 
 while True:
 
-<<<<<<< HEAD
     time.sleep(604800) 
     #time.sleep(2) VINK DEZE UIT ALS JE HEM ECHT GAAT DRAAIEN
-=======
-    time.sleep(604800)
-    #time.sleep(2) LET EROP DAT DE TIJDEN KLOPPEN
->>>>>>> 615ca34a7616262a736280b6a0609f1fc2a09cdc
 
     week = []
     day = 0
@@ -105,13 +100,8 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-<<<<<<< HEAD
     time.sleep(86400) //Omdat het sneller moet gaan bij het testen
     #time.sleep(2) VINK DEZE UIT ALS JE HEM ECHT GAAT DRAAIEN
-=======
-    time.sleep(86400)
-    #time.sleep(2)  LET EROP DAT DE TIJDEN KLOPPEN
->>>>>>> 615ca34a7616262a736280b6a0609f1fc2a09cdc
     for x in range(0,4): #Want voor 4 dagen
         message = ""
         header = "Subject: %s\n\n" % "Dagmail" #Onderwerp verschilt per bericht, dus moet buiten de functie.
