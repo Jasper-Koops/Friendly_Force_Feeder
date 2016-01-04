@@ -3,6 +3,7 @@ import time
 import smtplib
 import sys
 from recepten import food_opties
+from recepten import ingredienten
 
 """
 :::TODO (v1):::
@@ -82,13 +83,23 @@ def prijs(recept):
                 prijs += value
     return prijs
 
+def totale_prijs(week):
+    """Berekent de totale kosten van de week"""
+    totale_prijs = 0
+    for x in week:
+        totale_prijs += prijs(x)
+    return totale_prijs
+
+
+
+
 
 #Kies de recepten voor de dagen
 
 while True:
 
-    time.sleep(604800) 
-    #time.sleep(2) VINK DEZE UIT ALS JE HEM ECHT GAAT DRAAIEN
+    time.sleep(604800)
+    #time.sleep(2) LET EROP DAT DE TIJDEN KLOPPEN
 
     week = []
     day = 0
@@ -110,8 +121,8 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-    time.sleep(86400) //Omdat het sneller moet gaan bij het testen
-    #time.sleep(2) VINK DEZE UIT ALS JE HEM ECHT GAAT DRAAIEN
+    time.sleep(86400)
+    #time.sleep(2)  LET EROP DAT DE TIJDEN KLOPPEN
     for x in range(0,4): #Want voor 4 dagen
         message = ""
         header = "Subject: %s\n\n" % "Dagmail" #Onderwerp verschilt per bericht, dus moet buiten de functie.
