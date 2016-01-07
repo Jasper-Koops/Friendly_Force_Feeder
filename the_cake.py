@@ -7,11 +7,13 @@ from recepten import ingredienten
 
 """
 :::TODO (v1):::
-- Stuur elke week een kort overzicht + totale boodschappenlijst
 - Stuur op de dag zelf nog een dag specifieke reminder, + recept
+- Prijzen
+- Meer recepten (tot 10)
 :::TOEKOMST:::
 - Rekening houden met gebruikte ingredienten (zodat er niks overblijft)
-- Kennis geven van hoe duur iets is (hoe specifiek dit wordt moet ik nog beslissen)
+- Optie geven om ook met vrijdag te werken?
+- boodschappenlijst in eigen functie
 :::ALTIJD:::
 - Meer recepten toevoegen
 """
@@ -21,7 +23,6 @@ def double_checker(keuze, week):
     while keuze in week:
         keuze = random.choice(food_opties.items())
     return keuze
-
 
 def dag_printer(day):
     """Fixed even dat de juiste dag weergeven wordt"""
@@ -33,6 +34,8 @@ def dag_printer(day):
         return "Woensdag"
     elif day == 3:
         return "Donderdag"
+    #elif day == 4:
+        #return "Vrijdag"   #IK WEET NIET OF JE DIT ZOMAAR ZO KAN INVOEGEN
 
 def sent_mail(bericht):
     """Verstuurd de mail naar alle adressen in de commandline opgegeven targets."""
@@ -40,17 +43,17 @@ def sent_mail(bericht):
     password = sys.argv[3]
     targets = sys.argv[4:]
     smtp = "smtp.gmail.com:587"
-    print("sending email")
+    print("sending email") # KAN WEG ZODRA HET PROGRAMMA AF IS OM DE LOG SCHOON TE HOUDEN
     for adress in targets:
         server = smtplib.SMTP(smtp)
         server.starttls()
         server.login(user, password)
         server.sendmail(user, adress, bericht)
         server.close
-        print("mail verzonden naar")
-        print adress
+        print("mail verzonden naar") # KAN WEG ZODRA HET PROGRAMMA AF IS OM DE LOG SCHOON TE HOUDEN
+        print adress # KAN WEG ZODRA HET PROGRAMMA AF IS OM DE LOG SCHOON TE HOUDEN
 
-def week_recept(week, bericht):
+def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen functie
     """DEZE VERSIE GEEFT OOK PRIJS, IS DAT NIET NICE?"""
     day = 0
     for dag in week:
@@ -59,7 +62,7 @@ def week_recept(week, bericht):
         bericht += "\nGERECHT: "
         bericht += dag[0]
         bericht += "\n"
-        for x in list(dag[1:]):
+        for x in list(dag[1][1:]):
             for y in x:
                 bericht += y
                 bericht += "\n"
@@ -67,10 +70,26 @@ def week_recept(week, bericht):
             bericht += str(prijs(week[day][0]))
         day += 1
     bericht += "\n\n"
+    bericht += "BOODSCHAPPENLIJST\n"
+    # Het deel hieronder maakt de boodschappenlijst
+    boodschappenlijst = []
+    for dag in week:
+        for x in list(dag[1][1:]):
+            for y in x:
+                boodschappenlijst.append(y)
+    boodschappenlijst.sort()
+    for ing in boodschappenlijst:
+        if ing in boodschappenlijst:
+            if boodschappenlijst.count(ing) == 1: # we hoeven niet 1 XX op te schrijven
+                bericht += ing
+            else:
+                bericht += str(boodschappenlijst.count(ing)) + " " + ing
+            boodschappenlijst.remove(ing)
+        bericht += "\n"
+    bericht += "\n\n"
     bericht += "totale kosten: "
-    bericht += str(totale_prijs(week)) #Werkt dit?
+    bericht += str(totale_prijs(week)) #Werkt dit? <-- Ja.
     return bericht
-
 
 def dag_recept(week, day, message):
     """ Maak een leesbaar format van de dag herinnering """
@@ -78,15 +97,21 @@ def dag_recept(week, day, message):
     message += "\n\n"
     message += str(week[day][0])
     message += "\n\n"
-    for x in list(week[day][1:]):
+    for x in list(week[day][1][1:]):
         for y in x:
             message += y
             message += "\n"
     message += "\n"
     message += "totale kosten: "
     message += str(prijs(week[day][0]))
-    return message
+    message += "\n\n"
+    message += "BEREIDINGSWIJZE:\n"
+    for x in list(week[day][1][0]): #HIJ GEEFT NOG EEN KEER ING
+        message += str(x)
 
+
+
+    return message
 
 def prijs(recept):
     """Rekent de prijs uit van een recept """
@@ -104,12 +129,11 @@ def totale_prijs(week):
         totale_prijs += prijs(gerecht[0])
     return totale_prijs
 
-
 #Kies de recepten voor de dagen
 
 while True:
 
-    #time.sleep(604800)
+    #time.sleep(604800) # 1 week wachten
     time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
 
     max_budget = sys.argv[1]
@@ -128,10 +152,12 @@ while True:
         woensdag = random.choice(food_opties.items())
         week.append(double_checker(woensdag, week))
         donderdag = random.choice(food_opties.items())
-
         week.append(double_checker(donderdag, week))
 
-        if totale_prijs(week) <= max_budget:
+        #vrijdag = random.choice(food_opties.items()) GEEN IDEE OF DIT ZOMAAR WERKT
+        #week.append(double_checker(vrijdag, week))
+
+        if totale_prijs(week) <= max_budget: # Deze opzet lijkt te werken, maar durf er nog niet 100% mijn hand voor in het vuur te steken.
             doorgaan = "ja"
 
     bericht = ""
@@ -141,7 +167,7 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-    #time.sleep(86400)
+    #time.sleep(86400) # Een dag wachten
     time.sleep(2)  #LET EROP DAT DE TIJDEN KLOPPEN
     for x in range(0,4): #Want voor 4 dagen
         message = ""
