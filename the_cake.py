@@ -109,8 +109,6 @@ def dag_recept(week, day, message):
     for x in list(week[day][1][0]): #HIJ GEEFT NOG EEN KEER ING
         message += str(x)
 
-
-
     return message
 
 def prijs(recept):
@@ -133,8 +131,8 @@ def totale_prijs(week):
 
 while True:
 
-    #time.sleep(604800) # 1 week wachten
-    time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
+    time.sleep(604800) # 1 week wachten
+    #time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
 
     max_budget = sys.argv[1]
     week = [] # Is deze dubbelop?
@@ -167,8 +165,8 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-    #time.sleep(86400) # Een dag wachten
-    time.sleep(2)  #LET EROP DAT DE TIJDEN KLOPPEN
+    time.sleep(86400) # Een dag wachten
+    #time.sleep(2)  #LET EROP DAT DE TIJDEN KLOPPEN
     for x in range(0,4): #Want voor 4 dagen
         message = ""
         header = "Subject: %s\n\n" % "Dagmail" #Onderwerp verschilt per bericht, dus moet buiten de functie.
