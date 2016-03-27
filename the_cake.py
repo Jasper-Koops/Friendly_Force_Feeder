@@ -18,11 +18,13 @@ from recepten import ingredienten
 - Meer recepten toevoegen
 """
 
+
 def double_checker(keuze, week):
     """Checkt dat er geen dubbele recepten in de week komen."""
     while keuze in week:
         keuze = random.choice(food_opties.items())
     return keuze
+
 
 def dag_printer(day):
     """Fixed even dat de juiste dag weergeven wordt"""
@@ -36,6 +38,7 @@ def dag_printer(day):
         return "Donderdag"
     #elif day == 4:
         #return "Vrijdag"   #IK WEET NIET OF JE DIT ZOMAAR ZO KAN INVOEGEN
+
 
 def sent_mail(bericht):
     """Verstuurd de mail naar alle adressen in de commandline opgegeven targets."""
@@ -53,8 +56,9 @@ def sent_mail(bericht):
         print("mail verzonden naar") # KAN WEG ZODRA HET PROGRAMMA AF IS OM DE LOG SCHOON TE HOUDEN
         print adress # KAN WEG ZODRA HET PROGRAMMA AF IS OM DE LOG SCHOON TE HOUDEN
 
+
 def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen functie
-    """DEZE VERSIE GEEFT OOK PRIJS, IS DAT NIET NICE?"""
+    """DEZE VERSIE GEEFT OOK EEN PRIJS, IS DAT NIET NICE?"""
     day = 0
     for dag in week:
         bericht += "\n\n"
@@ -91,6 +95,7 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
     bericht += str(totale_prijs(week)) #Werkt dit? <-- Ja.
     return bericht
 
+
 def dag_recept(week, day, message):
     """ Maak een leesbaar format van de dag herinnering """
     message += dag_printer(day)
@@ -111,6 +116,7 @@ def dag_recept(week, day, message):
 
     return message
 
+
 def prijs(recept):
     """Rekent de prijs uit van een recept """
     prijs = 0
@@ -119,6 +125,7 @@ def prijs(recept):
             if key == gerecht:
                 prijs += value
     return prijs
+
 
 def totale_prijs(week):
     """Berekent de totale kosten van de week"""
