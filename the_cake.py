@@ -3,17 +3,24 @@ import time
 import smtplib
 import sys
 from recepten import food_opties
-from recepten import ingredienten
+from ingredients import ingredienten
+
+#nohup python the_cake.py MAX_BUDGET USER PASSWORD TARGETS
+
+
+DEBUG = True  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
+
+#
 
 """
 :::TODO (v1):::
-- Stuur op de dag zelf nog een dag specifieke reminder, + recept
+- Stuur op de dag zelf nog een dag specifieke reminder, + recept #DONE TOCH? KAN WEG? <---------------
 - Prijzen
-- Meer recepten (tot 10)
+- Meer recepten (tot 10) <-------- Tot infinity!
 :::TOEKOMST:::
 - Rekening houden met gebruikte ingredienten (zodat er niks overblijft)
-- Optie geven om ook met vrijdag te werken?
-- boodschappenlijst in eigen functie
+- Optie geven om ook met vrijdag te werken? #Is al een opening voor, weet alleen niet of het zo werkt.
+- boodschappenlijst in eigen functie # DONE. (Is dit echt handig? Opzich wellicht niet.)
 :::ALTIJD:::
 - Meer recepten toevoegen
 """
@@ -86,9 +93,16 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
         if ing in boodschappenlijst:
             if boodschappenlijst.count(ing) == 1: # we hoeven niet 1 XX op te schrijven
                 bericht += ing
+            elif boodschappenlijst.count(ing) > 1:
+                bericht += str(boodschappenlijst.count(ing)) + " " + ing
+                while boodschappenlijst.count(ing) > 1: # HIJ HAALDE HEM MAAR 1 KEER WEG. Nu een while loop die doorgaat totdat ze allemaal zijn exterminated.
+                    boodschappenlijst.remove(ing)
+
+            """
             else:
                 bericht += str(boodschappenlijst.count(ing)) + " " + ing
             boodschappenlijst.remove(ing)
+            """
         bericht += "\n"
     bericht += "\n\n"
     bericht += "totale kosten: "
@@ -138,9 +152,6 @@ def totale_prijs(week):
 
 while True:
 
-    time.sleep(604800) # 1 week wachten
-    #time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
-
     max_budget = sys.argv[1]
     week = [] # Is deze dubbelop?
     day = 0
@@ -172,7 +183,7 @@ while True:
     sent_mail(week_recept(week, bericht))
 
     #Hierna elke dag een recept mail
-    time.sleep(86400) # Een dag wachten
+    #time.sleep(86400) # Een dag wachten !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #time.sleep(2)  #LET EROP DAT DE TIJDEN KLOPPEN
     for x in range(0,4): #Want voor 4 dagen
         message = ""
@@ -180,3 +191,13 @@ while True:
         message += header
         sent_mail(dag_recept(week,day, message))
         day += 1
+        if DEBUG == True:
+            time.sleep(2)
+        if DEBUG == False:
+            time.sleep(86400) # <------ MOET JE DIE TIME.SLEEP VOOR EEN DAG NIET HIER DOEN?
+
+    if DEBUG == True:
+        time.sleep(2)
+    if DEBUG == False:
+        time.sleep(604800) # 1 week wachten, MOET ONDERAAN WANT ANDERS BEGIN JE HIERMEE.
+    #time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
