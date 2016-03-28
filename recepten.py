@@ -1,6 +1,22 @@
 import random
 
+"""
+Dit is een dictionary met als value de recepten namen en als waarden een grot elijst met daarin een string (het recept) en een lijst van ingredienten
+
+food_opties[0] =
+
+
+"""
+
 # GEEN CAPS GEBRUIKEN!!!
+
+#PULAO! (of hoe dat ook heet)
+#Pasta recepten
+#Bami varianten?
+#Die ene BBC kokos annas soep
+#BOvenstaande soep met kip
+
+
 
 food_opties = {
 
@@ -28,7 +44,7 @@ food_opties = {
         4. Voeg tegen het einde de kruiden en de geroosterde paprika toe en roer goed.
         5. Voeg de cashewnoten toe en server.
         """,
-       ["Boullion blokje, couscous", "wortel", "geroosterde paprika", "cashewnoten", "prei", "kruiden"]],
+       ["Boullion blokje", "couscous", "wortel", "geroosterde paprika", "cashewnoten", "prei", "kruiden"]],
 
 
         #RECEPT 3
@@ -135,6 +151,7 @@ food_opties = {
         """,
         ["broodjes", "hamburgers", "kaas", "ui", "augurk", "mayonaisse", "ketchup", "mosterd", "basalmico azijn", "aardappelschijfjes"]],
 
+
         #RECEPT 10
         "FANCY DAHL": ["""
 
@@ -155,9 +172,13 @@ food_opties = {
 
         ["rijst", "linzen rood", "ui", "tomaat", "wortel", "kokosmelk mini", "kruiden", "limoensap", "amandelschijfjes"]],
 
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+        }
+>>>>>>> 7fcb990556436d3cd0941e7bf93b9b9c271550fa
