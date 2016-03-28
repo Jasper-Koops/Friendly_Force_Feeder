@@ -77,7 +77,7 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
             for y in x:
                 bericht += y
                 bericht += "\n"
-            bericht += "kosten: "
+            bericht += "kosten (schatting): "
             bericht += str(prijs(week[day][0]))
         day += 1
     bericht += "\n\n"
@@ -105,7 +105,7 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
             """
         bericht += "\n"
     bericht += "\n\n"
-    bericht += "totale kosten: "
+    bericht += "totale kosten (schatting): "
     bericht += str(totale_prijs(week)) #Werkt dit? <-- Ja.
     return bericht
 
@@ -121,20 +121,19 @@ def dag_recept(week, day, message):
             message += y
             message += "\n"
     message += "\n"
-    message += "totale kosten: "
+    message += "totale kosten (schatting): "
     message += str(prijs(week[day][0]))
     message += "\n\n"
     message += "BEREIDINGSWIJZE:\n"
     for x in list(week[day][1][0]): #HIJ GEEFT NOG EEN KEER ING
         message += str(x)
-
     return message
 
 
 def prijs(recept):
     """Rekent de prijs uit van een recept """
     prijs = 0
-    for gerecht in food_opties[recept]:
+    for gerecht in food_opties[recept][1]:
         for key, value in ingredienten.items():
             if key == gerecht:
                 prijs += value
