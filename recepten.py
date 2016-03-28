@@ -172,13 +172,5 @@ food_opties = {
 
         ["rijst", "linzen rood", "ui", "tomaat", "wortel", "kokosmelk mini", "kruiden", "limoensap", "amandelschijfjes"]],
 
-<<<<<<< HEAD
 
-
-
-
-
-
-=======
         }
->>>>>>> 7fcb990556436d3cd0941e7bf93b9b9c271550fa
