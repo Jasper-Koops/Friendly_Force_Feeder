@@ -8,7 +8,7 @@ from ingredients import ingredienten
 #nohup python the_cake.py MAX_BUDGET USER PASSWORD TARGETS
 
 
-DEBUG = True  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
+DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
 
 #
 
