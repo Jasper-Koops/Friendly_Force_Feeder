@@ -181,5 +181,19 @@ food_opties = {
         5. Serveer, eet, geniet en ervaar enzo.                                   """,
         ["ui", "rode peper", "kruiden", "kippen boullion", "annanas", "room"]],
 
+        #RECEPT 12
+        "KIP CURRY II - I couldnt curry less": ["""
+        Tijd: 45 minuten.
+
+        1. Verhit de olie in een pan en water in de andere
+        2. Fruit de ui
+        3. Voeg na een paar minuten de knoflook, kruiden (BEHALVE de caynne peper) en suiker toe, blijf twee minuten roeren.
+        4. Voeg de kip, tomaten pasta, 70ml yoghurt en 50ml kokosmelk toe.
+        5. Breng de curry aan de koek en laat het zachtjes borrelen voor en minuut of 20
+        6. Time het zo dat je de rijst bijna gaar hebt, voeg limoensap in de curry toe samen met de cayenne peper. Kook nog een minuut of vijf.
+        7. Serveer, eet, ervaar, geniet.
+        """,
+        ["ui", "knoflook", "curry poeder", "gemalen kaneel", "paprika poeder", "gember", "suiker", "kip", "tomaten purree", "yoghurt", "kokosmelk mini", "limoen", "cayenne peper"]]
+
 
         }

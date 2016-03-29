@@ -2,6 +2,7 @@ import random
 import time
 import smtplib
 import sys
+import datetime
 from recepten import food_opties
 from ingredients import ingredienten
 
@@ -21,6 +22,8 @@ DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat
 - Optie geven om ook met vrijdag te werken? #Is al een opening voor, weet alleen niet of het zo werkt.
 - boodschappenlijst in eigen functie # DONE. (Is dit echt handig? Opzich wellicht niet.)
 - Log bestand maken zodat ik langere trends kan tracken? (gerecht, prijs, weekprijs)
+- Specifiek zijn bij de kruiden. Anders is het gewoon niet praktisch.
+- Bereidingstijd toevoegen? (en zo ja in een appart puntje of in het recept?)
 :::ALTIJD:::
 - Meer recepten toevoegen
 """
@@ -146,6 +149,10 @@ def totale_prijs(week):
     for gerecht in week:
         totale_prijs += prijs(gerecht[0])
     return totale_prijs
+
+def log_bestand_maker():
+    """Geeft een overzicht van alle recepten die week + de totale kosten (en eventueel kosten per dag?) """
+    pass
 
 #Kies de recepten voor de dagen
 
