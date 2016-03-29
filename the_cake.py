@@ -10,7 +10,6 @@ from ingredients import ingredienten
 
 DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
 
-#
 
 """
 :::TODO (v1):::
@@ -21,6 +20,7 @@ DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat
 - Rekening houden met gebruikte ingredienten (zodat er niks overblijft)
 - Optie geven om ook met vrijdag te werken? #Is al een opening voor, weet alleen niet of het zo werkt.
 - boodschappenlijst in eigen functie # DONE. (Is dit echt handig? Opzich wellicht niet.)
+- Log bestand maken zodat ik langere trends kan tracken? (gerecht, prijs, weekprijs)
 :::ALTIJD:::
 - Meer recepten toevoegen
 """
@@ -94,7 +94,7 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
             if boodschappenlijst.count(ing) == 1: # we hoeven niet 1 XX op te schrijven
                 bericht += ing
             elif boodschappenlijst.count(ing) > 1:
-                bericht += str(boodschappenlijst.count(ing)) + " " + ing
+                bericht += str(boodschappenlijst.count(ing)) + " porties " + ing
                 while boodschappenlijst.count(ing) > 1: # HIJ HAALDE HEM MAAR 1 KEER WEG. Nu een while loop die doorgaat totdat ze allemaal zijn exterminated.
                     boodschappenlijst.remove(ing)
 

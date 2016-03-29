@@ -8,7 +8,7 @@ ingredienten = {
 
     #MEESTE PRIJZEN ZIJN NEP
     "aardappel": 0.50, # !!!!!!!
-    "aardappelschijfjes": 0.80, #!!!!!!!!!!!!!!!!
+    "aardappelschijfjes": 0.80, #!!!!!!!!!!!!!
     "amandelschijfjes": 0.20, #!!!!!!!!!!!!!!!!!
     "augurk": 0.05, #!!!!!!!!!
     "basalmico azijn": 0.30, # !!!!!!!!!!!!
@@ -18,8 +18,10 @@ ingredienten = {
     "cashewnoten": 0.51, #!!!!!!!!!!!!!!!!!
     "couscous": 0.20, #!!!!!
     "geroosterde paprika": 0.80, #!!!!!
+    "groente boullion": 0.20, #!!!!!!!!!!
     "kaas": 0.20, # !!!!!!!!!!
     "kip": 4.00, # !!!!!!!
+    "kippen boullion": 0.20, #!!!!!!!!!!!!!
     "knoflook": 0.10, # !!!!!!!!!!!!
     "kroepoek": 0.43,
     "kokosmelk mini": 1.20, #!!!!!!!!!!!!!!!!

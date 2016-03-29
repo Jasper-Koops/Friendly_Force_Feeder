@@ -44,7 +44,7 @@ food_opties = {
         4. Voeg tegen het einde de kruiden en de geroosterde paprika toe en roer goed.
         5. Voeg de cashewnoten toe en server.
         """,
-       ["Boullion blokje", "couscous", "wortel", "geroosterde paprika", "cashewnoten", "prei", "kruiden"]],
+       ["groente boullion", "couscous", "wortel", "geroosterde paprika", "cashewnoten", "prei", "kruiden"]],
 
 
         #RECEPT 3
@@ -169,8 +169,17 @@ food_opties = {
         12. Serveer met rijst en strooi de geroosterde amandelschijfjes erover heen.
         13. Dit is als het goed is het beste wat je ooit hebt gegeten. Als het dat niet is dan ben je persoonlijk tekort geschoten.
         """,
-
         ["rijst", "linzen rood", "ui", "tomaat", "wortel", "kokosmelk mini", "kruiden", "limoensap", "amandelschijfjes"]],
+
+        #RECEPT 11
+        "Vega annas soep": ["""
+        1. Verhit de olie in een soep-pan en  bak de ui en peper een minuut of 3 totdat ze zacht zijn.
+        2. Voeg de kruiden (currie poeder en kurkumma) en kook 1 minuut.
+        3. Verkruimel het buollion blokje en voeg +/- 350 ml water en de annanas toe. Breng aan de kook en laat het 10 minuten simmeren
+        4. Voeg de slagroom toe en laat het nog
+        drie minuten koken
+        5. Serveer, eet, geniet en ervaar enzo.                                   """,
+        ["ui", "rode peper", "kruiden", "kippen boullion", "annanas", "room"]],
 
 
         }
