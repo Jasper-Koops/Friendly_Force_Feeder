@@ -22,8 +22,10 @@ DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat
 - Optie geven om ook met vrijdag te werken? #Is al een opening voor, weet alleen niet of het zo werkt.
 - boodschappenlijst in eigen functie # DONE. (Is dit echt handig? Opzich wellicht niet.)
 - Log bestand maken zodat ik langere trends kan tracken? (gerecht, prijs, weekprijs)
-- Specifiek zijn bij de kruiden. Anders is het gewoon niet praktisch.
 - Bereidingstijd toevoegen? (en zo ja in een appart puntje of in het recept?)
+
+- Nieuw programma; quick generator: geen mails of herinneringen maar gewoon een snelle boodschappen lijst met instelbaar budget en aantal dagen. (budget is geen geld maar 'goedkoop' 'medium', 'duur')
+
 :::ALTIJD:::
 - Meer recepten toevoegen
 """

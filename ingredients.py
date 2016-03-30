@@ -19,8 +19,10 @@ ingredienten = {
     "cashewnoten": 0.51, #!!!!!!!!!!!!!!!!!
     "couscous": 0.20, #!!!!!
     "curry poeder": 0.10, #!!!!
+    "garam massala": 0.15, #!!!!!!!!!!!
     "geroosterde paprika": 0.80, #!!!!!
     "gemalen kaneel": 0.11, #!!!!!!!!
+    "gemalen komijn": 0.10, #!!!!!!!!
     "groente boullion": 0.20, #!!!!!!!!!!
     "gember": 0.20, #!!!!!!!!
     "kaas": 0.20, # !!!!!!!!!!
@@ -29,6 +31,8 @@ ingredienten = {
     "knoflook": 0.10, # !!!!!!!!!!!!
     "kroepoek": 0.43,
     "kokosmelk mini": 1.20, #!!!!!!!!!!!!!!!!
+    "koriander poeder": 0.20, #!!!!!!!!!
+    "kurkumma": 0.10, #!!!!!!!
     "limoensap": 0.20, # !!!!!!
     "linzen groen": 0.30, # !!!!!!!
     "linzen rood": 0.20, #!!!!!!!!!
@@ -36,6 +40,7 @@ ingredienten = {
     "paprika":0.46,
     "paprika poeder": 0.10, #!!!!!!!!!!
     "pasta": 0.20, # !!!!!!!!!!
+    "peper": 0.05, #!!!!
     "prei": 0.60,
     "rijst":0.20, # !!!!!!
     "rode ui": 0.24, #!!!!!!!
@@ -46,5 +51,7 @@ ingredienten = {
     "ui": 0.11, #!!!!!!!!!!
     "wortel": 0.16,
     "yoghurt": 0.80, # !!!!!
+    "nasi kruiden": 0.30, #!!!!!!!
+    "italiaanse kruiden": 0.20, #!!!!!!!!!!!
 
 }
