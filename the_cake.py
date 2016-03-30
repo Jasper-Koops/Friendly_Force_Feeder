@@ -20,7 +20,6 @@ DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat
 :::TOEKOMST:::
 - Rekening houden met gebruikte ingredienten (zodat er niks overblijft)
 - Optie geven om ook met vrijdag te werken? #Is al een opening voor, weet alleen niet of het zo werkt.
-- boodschappenlijst in eigen functie # DONE. (Is dit echt handig? Opzich wellicht niet.)
 - Log bestand maken zodat ik langere trends kan tracken? (gerecht, prijs, weekprijs)
 - Bereidingstijd toevoegen? (en zo ja in een appart puntje of in het recept?)
 

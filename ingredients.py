@@ -4,7 +4,6 @@ ingredienten = {
 
     # ^ staat hij volgens mij
     #^^^^^^^^NOPE NIET MEER.
-    #^ DIT DING MOET IN EEN APPART BESTAND GAAN
 
     #MEESTE PRIJZEN ZIJN NEP
     "aardappel": 0.50, # !!!!!!!
