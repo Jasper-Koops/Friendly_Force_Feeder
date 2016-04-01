@@ -24,6 +24,7 @@ ingredienten = {
     "gemalen komijn": 0.10, #!!!!!!!!
     "groente boullion": 0.20, #!!!!!!!!!!
     "gember": 0.20, #!!!!!!!!
+    "hamburgers": 4.00, #!!!!!!!!!!
     "kaas": 0.20, # !!!!!!!!!!
     "kip": 4.20, # !!!!!!!
     "kippen boullion": 0.20, #!!!!!!!!!!!!!
