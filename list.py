@@ -45,9 +45,6 @@ def gerechten_kiezer(food_opties, dagen):
         for x in range(1, (dagen + 1)):
             x = random.choice(food_opties.items())
             lijst.append(double_checker(x, lijst))
-        #for x in lijst: #DEZE KAN LATER WEG, IS ALLEEN OM TE CHECKEN WAT ER IN DIE LIJST Staat
-            #print x[0]
-
     return lijst  #<------ WAT HIJ UITEINDELIJK GAAT DOEN.
 
 
@@ -59,9 +56,7 @@ def boodschappenlijst_generator(lijst):
             for y in x:
                 boodschappenlijst.append(y)
     boodschappenlijst.sort()
-
     return boodschappenlijst
-
 
 
 def formatter(lijst):
@@ -96,11 +91,11 @@ def formatter(lijst):
         bericht += "\n\n"
         dag += 1
 
-    #return boodschappenlijst
     return bericht
-    #HIERONDER VOOR DEBUG ONLY
 
 
 dagen = int(raw_input("Yo G,voor hoeveel dagen wil je recepten?\n> "))
-
 print(formatter(gerechten_kiezer(food_opties, dagen)))
+
+#lijst.append(bericht)  <--- voor django
+#^DIT ALLES MOET VERVOLGENS NAAR VIEWS. 

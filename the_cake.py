@@ -8,22 +8,23 @@ from ingredients import ingredienten
 
 #nohup python the_cake.py MAX_BUDGET USER PASSWORD TARGETS
 
+#KOKEN MET AANBIEDINGEN
+
+#VOOR VRIJDAG KRIJG JE NU GEEN DAGMAIL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#WERKT NA EEN WEEK NIET MEER.
 
 DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
 
 
 """
 :::TODO (v1):::
-- Stuur op de dag zelf nog een dag specifieke reminder, + recept #DONE TOCH? KAN WEG? <---------------
-- Prijzen
-- Meer recepten (tot 10) <-------- Tot infinity!
-:::TOEKOMST:::
 - Rekening houden met gebruikte ingredienten (zodat er niks overblijft)
 - Optie geven om ook met vrijdag te werken? #Is al een opening voor, weet alleen niet of het zo werkt.
+
+:::TOEKOMST:::
 - Log bestand maken zodat ik langere trends kan tracken? (gerecht, prijs, weekprijs)
 - Bereidingstijd toevoegen? (en zo ja in een appart puntje of in het recept?)
-
-- Nieuw programma; quick generator: geen mails of herinneringen maar gewoon een snelle boodschappen lijst met instelbaar budget en aantal dagen. (budget is geen geld maar 'goedkoop' 'medium', 'duur')
 
 :::ALTIJD:::
 - Meer recepten toevoegen
@@ -47,8 +48,8 @@ def dag_printer(day):
         return "Woensdag"
     elif day == 3:
         return "Donderdag"
-    #elif day == 4:
-        #return "Vrijdag"   #IK WEET NIET OF JE DIT ZOMAAR ZO KAN INVOEGEN
+    elif day == 4: #DEZE WAS ER EERST NIET, IK HEB HEM ERBIJ GEZET
+        return "Vrijdag"   #IK WEET NIET OF JE DIT ZOMAAR ZO KAN INVOEGEN
 
 
 def sent_mail(bericht):
@@ -157,10 +158,12 @@ def log_bestand_maker():
 
 #Kies de recepten voor de dagen
 
+max_budget = sys.argv[1]
+
 while True:
 
-    max_budget = sys.argv[1]
-    week = [] # Is deze dubbelop?
+    #max_budget = sys.argv[1]   !!!!!!!Ik heb hem erbuiten gezet want wellicht veroorzaakte dat dingen? Later weer checken
+    #week = [] # Is deze dubbelop? Ja. Ik comment hem uit. Verwijderen als alles blijft werken.
     day = 0
     doorgaan = "nee"
 
@@ -192,7 +195,7 @@ while True:
     #Hierna elke dag een recept mail
     #time.sleep(86400) # Een dag wachten !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #time.sleep(2)  #LET EROP DAT DE TIJDEN KLOPPEN
-    for x in range(0,4): #Want voor 4 dagen
+    for x in range(0,5): #Want voor 5 dagen
         message = ""
         header = "Subject: %s\n\n" % "Dagmail" #Onderwerp verschilt per bericht, dus moet buiten de functie.
         message += header
@@ -208,3 +211,6 @@ while True:
     if DEBUG == False:
         time.sleep(604800) # 1 week wachten, MOET ONDERAAN WANT ANDERS BEGIN JE HIERMEE.
     #time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
+
+    print("week voorbij, de print versie")
+    return("week voorbij, de return versie")
