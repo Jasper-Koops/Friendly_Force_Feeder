@@ -213,4 +213,4 @@ while True:
     #time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
 
     print("week voorbij, de print versie")
-    return("week voorbij, de return versie")
+    
