@@ -14,7 +14,7 @@ from ingredients import ingredienten
 
 #WERKT NA EEN WEEK NIET MEER.
 
-DEBUG = False  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
+DEBUG = "ja"  #< Yo wat doet dit? Dit zet de pauzes op hele kleine tijden zodat ik dat niet telkens vergeet te fixen.
 
 
 """
@@ -73,7 +73,7 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
     """DEZE VERSIE GEEFT OOK EEN PRIJS, IS DAT NIET NICE?"""
     day = 0
     for dag in week:
-        bericht += "\n\n"
+        bericht += "\n\n\n"
         bericht += dag_printer(day)
         bericht += "\nGERECHT: "
         bericht += dag[0]
@@ -85,7 +85,7 @@ def week_recept(week, bericht): # boodschappenlijst moet eigenlijk in eigen func
             bericht += "kosten (schatting): "
             bericht += str(prijs(week[day][0]))
         day += 1
-    bericht += "\n\n"
+    bericht += "\n\n\n"
     bericht += "BOODSCHAPPENLIJST\n"
     # Het deel hieronder maakt de boodschappenlijst
     boodschappenlijst = []
@@ -179,9 +179,8 @@ while True:
         week.append(double_checker(woensdag, week))
         donderdag = random.choice(food_opties.items())
         week.append(double_checker(donderdag, week))
-
-        #vrijdag = random.choice(food_opties.items()) GEEN IDEE OF DIT ZOMAAR WERKT
-        #week.append(double_checker(vrijdag, week))
+        vrijdag = random.choice(food_opties.items()) #GEEN IDEE OF DIT ZOMAAR WERKT
+        week.append(double_checker(vrijdag, week))
 
         if totale_prijs(week) <= max_budget: # Deze opzet lijkt te werken, maar durf er nog niet 100% mijn hand voor in het vuur te steken.
             doorgaan = "ja"
@@ -201,16 +200,17 @@ while True:
         message += header
         sent_mail(dag_recept(week,day, message))
         day += 1
-        if DEBUG == True:
-            time.sleep(2)
-        if DEBUG == False:
+
+        if DEBUG == "ja":
+            time.sleep(3)
+        elif DEBUG == "nee":
             time.sleep(86400) # <------ MOET JE DIE TIME.SLEEP VOOR EEN DAG NIET HIER DOEN?
 
-    if DEBUG == True:
-        time.sleep(2)
-    if DEBUG == False:
+
+    if DEBUG == "ja":
+        time.sleep(4)
+    elif DEBUG == "nee":
         time.sleep(604800) # 1 week wachten, MOET ONDERAAN WANT ANDERS BEGIN JE HIERMEE.
     #time.sleep(2) #LET EROP DAT DE TIJDEN KLOPPEN
 
     print("week voorbij, de print versie")
-    
